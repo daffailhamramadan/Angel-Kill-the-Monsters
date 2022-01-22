@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Rooms
   - SpawnPoints
-  - DoorChecker
+  - DoorCheck
   layers:
   - Default
   - TransparentFX
