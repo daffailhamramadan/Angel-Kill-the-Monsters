@@ -8,21 +8,40 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private PlayerHealth playerHealth;
 
+    [SerializeField] private GameObject Finish;
+
+    private void OnEnable()
+    {
+        BossDeath.bossDeath += Win;
+    }
+
+    private void OnDisable()
+    {
+        BossDeath.bossDeath -= Win;
+    }
+
+    private void Start()
+    {
+        Finish.SetActive(false);
+    }
+
+    private void Win()
+    {
+        Finish.SetActive(true);
+    }
+
     private void Update()
     {
-        if(playerHealth.currentHealth == 2)
+        for (int i = 0; i < hearts.Length; i++)
         {
-            hearts[2].SetActive(false);
-        }
-
-        if (playerHealth.currentHealth == 1)
-        {
-            hearts[1].SetActive(false);
-        }
-
-        if (playerHealth.currentHealth == 0)
-        {
-            hearts[0].SetActive(false);
+            if(i < playerHealth.currentHealth)
+            {
+                hearts[i].SetActive(true);
+            }
+            else
+            {
+                hearts[i].SetActive(false);
+            }
         }
     }
 }

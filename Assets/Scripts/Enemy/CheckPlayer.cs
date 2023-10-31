@@ -4,33 +4,23 @@ using UnityEngine;
 
 public class CheckPlayer : MonoBehaviour
 {
+    [SerializeField] private Transform areaCheckPlayer;
+
     public bool IsPlayerNearby;
 
-    private Vector2 startPosition;
-    
-    private void Awake()
-    {
-        startPosition = transform.position;
-    }
+    public LayerMask player;
 
     private void Update()
     {
-        transform.position = startPosition;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
+        if (Physics2D.OverlapBox(areaCheckPlayer.position, new Vector3(17f,7f), 0f, player))
         {
             IsPlayerNearby = true;
         }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
+        else
         {
             IsPlayerNearby = false;
         }
+
+      
     }
 }

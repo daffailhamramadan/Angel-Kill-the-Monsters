@@ -8,6 +8,8 @@ public class RoomSpawn : MonoBehaviour
 
     private int randomIndex;
 
+    private Transform parent;
+
     public enum DoorDirection
     {
         Bottom,
@@ -33,6 +35,10 @@ public class RoomSpawn : MonoBehaviour
     private void Start()
     {
         Invoke("Spawn", 0.1f);
+
+        parent = GameObject.Find("Rooms").GetComponent<Transform>();
+
+        Destroy(this.gameObject, 10f);
     }
 
     private void Spawn()
@@ -43,26 +49,26 @@ public class RoomSpawn : MonoBehaviour
             {
                 randomIndex = Random.Range(0, roomTemplates.roomBottom.Length);
 
-                Instantiate(roomTemplates.roomBottom[randomIndex], transform.position, Quaternion.identity);
+                Instantiate(roomTemplates.roomBottom[randomIndex], transform.position, Quaternion.identity, parent);
             }
             else if (doorDirection == DoorDirection.Top)
             {
                 randomIndex = Random.Range(0, roomTemplates.roomTop.Length);
 
-                Instantiate(roomTemplates.roomTop[randomIndex], transform.position, Quaternion.identity);
+                Instantiate(roomTemplates.roomTop[randomIndex], transform.position, Quaternion.identity, parent);
             }
             else if (doorDirection == DoorDirection.Left)
             {
                 randomIndex = Random.Range(0, roomTemplates.roomLeft.Length);
 
-                Instantiate(roomTemplates.roomLeft[randomIndex], transform.position, Quaternion.identity);
+                Instantiate(roomTemplates.roomLeft[randomIndex], transform.position, Quaternion.identity, parent);
             }
 
             else if (doorDirection == DoorDirection.Right)
             {
                 randomIndex = Random.Range(0, roomTemplates.roomRight.Length);
 
-                Instantiate(roomTemplates.roomRight[randomIndex], transform.position, Quaternion.identity);
+                Instantiate(roomTemplates.roomRight[randomIndex], transform.position, Quaternion.identity, parent);
             }
 
             spawned = true;

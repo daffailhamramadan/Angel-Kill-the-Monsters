@@ -13,6 +13,11 @@ public class GameController : MonoBehaviour
         {
             GameOver();
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     private void GameOver()

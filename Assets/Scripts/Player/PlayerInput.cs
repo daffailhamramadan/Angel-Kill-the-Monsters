@@ -18,10 +18,24 @@ public class PlayerInput : MonoBehaviour
         private set;
     }
 
+    public bool LeftMouse()
+    {
+        if(BossDeath.Finish != true)
+        {
+            return Input.GetMouseButtonDown(0);
+        }
+
+        return false;
+    }
+
     private void Update()
     {
-        Horizontal = Input.GetAxis("Horizontal");
+        if(BossDeath.Finish != true)
+        {
+            Horizontal = Input.GetAxis("Horizontal");
 
-        Vertical = Input.GetAxis("Vertical");
+            Vertical = Input.GetAxis("Vertical");
+        }
+
     }
 }

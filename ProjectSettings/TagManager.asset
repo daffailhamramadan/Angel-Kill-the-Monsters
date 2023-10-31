@@ -8,6 +8,12 @@ TagManager:
   - SpawnPoints
   - DoorCheck
   - Enemy
+  - Heart
+  - Bullet
+  - Bullets
+  - Wall
+  - PlayerCheck
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -15,7 +21,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 

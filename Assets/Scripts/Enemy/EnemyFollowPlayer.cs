@@ -12,16 +12,18 @@ public class EnemyFollowPlayer : MonoBehaviour
 
     private Vector2 startPosition;
 
-    public bool stopFollow;
+    private bool stopFollow;
 
     private void Awake()
     {
         player = GameObject.Find("Player").GetComponent<Transform>();
 
-        checkPlayer = GetComponentInChildren<CheckPlayer>();
+        checkPlayer = GetComponent<CheckPlayer>();
 
         startPosition = transform.position;
     }
+
+
 
     private void Update()
     {
@@ -29,7 +31,7 @@ public class EnemyFollowPlayer : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         }
-        else if(checkPlayer.IsPlayerNearby == false)
+        else if (checkPlayer.IsPlayerNearby == false)
         {
             transform.position = Vector2.MoveTowards(transform.position, startPosition, speed * Time.deltaTime);
         }
